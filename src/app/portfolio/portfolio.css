@@ -1,0 +1,20 @@
+/* ...existing code... */
+.coming-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--primary, #5a189a);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .coming-soon {
+    font-size: 1.3rem;
+    min-height: 40vh;
+    padding: 0 1rem;
+  }
+}
+/* ...existing code... */

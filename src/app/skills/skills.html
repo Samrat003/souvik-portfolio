@@ -1,0 +1,102 @@
+<app-nav-bar></app-nav-bar>
+<section class="skills-main">
+  <aside class="skills-sidebar">
+    <ul class="skills-sections">
+      <li [class.active]="selectedSection === 'Language'" (click)="selectSection('Language')">Language</li>
+      <li [class.active]="selectedSection === 'Framework'" (click)="selectSection('Framework')">Framework</li>
+      <li [class.active]="selectedSection === 'Tools'" (click)="selectSection('Tools')">Tools</li>
+      <li [class.active]="selectedSection === 'DevOps'" (click)="selectSection('DevOps')">DevOps</li>
+      <li [class.active]="selectedSection === 'Platform'" (click)="selectSection('Platform')">Platform</li>
+      <li [class.active]="selectedSection === 'OS'" (click)="selectSection('OS')">OS</li>
+    </ul>
+  </aside>
+  <div class="skills-content" [@fadeInOut]="selectedSection">
+    <ng-container [ngSwitch]="selectedSection">
+      <ng-container *ngSwitchCase="'Language'">
+        <ul class="skills-list">
+          <li class="skill-item">
+            <img src="assets/logos/java.png" alt="Java" class="skill-logo" />
+            <span class="skill-name">Java</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="90%"></div></div>
+          </li>
+          <li class="skill-item">
+            <img src="assets/logos/typescript.png" alt="TypeScript" class="skill-logo" />
+            <span class="skill-name">TypeScript</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="75%"></div></div>
+          </li>
+          <li class="skill-item">
+            <img src="assets/logos/js.png" alt="JavaScript" class="skill-logo" />
+            <span class="skill-name">JavaScript</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="70%"></div></div>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-container *ngSwitchCase="'Framework'">
+        <ul class="skills-list">
+          <li class="skill-item">
+            <img src="assets/logos/angular.png" alt="Angular" class="skill-logo" />
+            <span class="skill-name">Angular</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="80%"></div></div>
+          </li>
+          <li class="skill-item">
+            <img src="assets/logos/spring.png" alt="Spring Boot" class="skill-logo" />
+            <span class="skill-name">Spring Boot</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="85%"></div></div>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-container *ngSwitchCase="'Tools'">
+        <ul class="skills-list">
+          <li class="skill-item">
+            <img src="assets/logos/git.png" alt="Git" class="skill-logo" />
+            <span class="skill-name">Git</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="80%"></div></div>
+          </li>
+          <li class="skill-item">
+            <img src="assets/logos/vscode.png" alt="VS Code" class="skill-logo" />
+            <span class="skill-name">VS Code</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="75%"></div></div>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-container *ngSwitchCase="'DevOps'">
+        <ul class="skills-list">
+          <li class="skill-item">
+            <img src="assets/logos/docker.png" alt="Docker" class="skill-logo" />
+            <span class="skill-name">Docker</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="60%"></div></div>
+          </li>
+          <li class="skill-item">
+            <img src="assets/logos/git.png" alt="GitHub Actions" class="skill-logo" />
+            <span class="skill-name">GitHub Actions</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="55%"></div></div>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-container *ngSwitchCase="'Platform'">
+        <ul class="skills-list">
+          <li class="skill-item">
+            <img src="assets/logos/aws.png" alt="AWS" class="skill-logo" />
+            <span class="skill-name">AWS</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="50%"></div></div>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-container *ngSwitchCase="'OS'">
+        <ul class="skills-list">
+          <li class="skill-item">
+            <img src="assets/logos/linux.png" alt="Linux" class="skill-logo" />
+            <span class="skill-name">Linux</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="70%"></div></div>
+          </li>
+          <li class="skill-item">
+            <img src="assets/logos/windows.png" alt="Windows" class="skill-logo" />
+            <span class="skill-name">Windows</span>
+            <div class="skill-bar-bg"><div #skillBar class="skill-bar" data-width="65%"></div></div>
+          </li>
+        </ul>
+      </ng-container>
+      <div *ngSwitchDefault class="skills-placeholder">Select a section to view skills.</div>
+    </ng-container>
+  </div>
+</section>

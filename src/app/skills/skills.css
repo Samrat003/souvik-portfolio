@@ -1,0 +1,212 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#root, app-root {
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.skills-main {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 64px);
+  min-height: 0;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.skills-sidebar {
+  width: 30%;
+  min-width: 180px;
+  max-width: 320px;
+  background: #f7f6fb;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 2rem 1rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  max-height: 100%;
+  box-shadow: 1px 0 0 #ece9f7;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.skills-sections {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.skills-sections li {
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  color: #444;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  box-sizing: border-box;
+}
+
+.skills-sections li.active,
+.skills-sections li:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.skills-content {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  box-shadow: inset 14px 14px 16px #cccccc,
+              inset -14px -14px 16px #f4f4f4;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.skills-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+.skill-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #f5f5f5;
+  box-shadow: 0 1px 4px rgba(90,24,154,0.04);
+  box-sizing: border-box;
+}
+
+.skill-name {
+  min-width: 90px;
+  font-weight: 500;
+  color: var(--primary);
+  font-size: 1.08rem;
+  box-sizing: border-box;
+}
+
+.skill-bar-bg {
+  flex: 1;
+  height: 10px;
+  background: #ece9f7;
+  border-radius: 6px;
+  margin-left: 1rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.skill-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #a685e2);
+  border-radius: 6px;
+  transition: width 1.2s cubic-bezier(.4,2,.3,1);
+  width: 0;
+}
+
+.skill-bar.animated {
+  /* The width will be set inline via Angular binding, but this class triggers the animation */
+}
+
+.skills-placeholder {
+  color: #aaa;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 2rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .skills-main {
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    overflow: visible;
+  }
+  .skills-sidebar {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    box-shadow: none;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    height: auto;
+    background: #fff;
+  }
+  .skills-sections {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0;
+  }
+  .skills-sections li {
+    margin-bottom: 0;
+    padding: 0.7rem 0.7rem;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+  .skills-content {
+    width: 100%;
+    border-radius: 0;
+    padding: 1.2rem 0.5rem;
+    min-width: 0;
+    height: auto;
+    max-width: 100%;
+    overflow: visible;
+    margin-top: 0;
+    box-shadow: none;
+    background: #fff;
+    display: block;
+  }
+}

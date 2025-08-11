@@ -1,0 +1,82 @@
+<app-nav-bar></app-nav-bar>
+<section class="about-container">
+  <div class="about-main">
+    <div class="about-left">
+      <div class="about-profile-row">
+        <img src="assets/profile.png" alt="Profile" class="about-profile-pic" />
+        <div class="about-profile-info">
+          <div class="about-profile-name">Souvik Patra</div>
+          <div class="about-profile-email">souvik.samrat.003@gmail.com</div>
+        </div>
+      </div>
+      <div class="about-bio">
+        I am a passionate developer with experience in backend, frontend, and system design. I love building scalable applications and learning new technologies.
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-tabs">
+        <button [class.active]="selectedTab === 'education'" (click)="selectTab('education')">Education</button>
+        <button [class.active]="selectedTab === 'experience'" (click)="selectTab('experience')">Experience</button>
+        <button [class.active]="selectedTab === 'project'" (click)="selectTab('project')">Project</button>
+      </div>
+      <div class="about-tab-content">
+        <ng-container [ngSwitch]="selectedTab">
+          <div *ngSwitchCase="'education'">
+            <div class="about-section">
+              <ul class="about-journey-list">
+                <li class="about-journey-item">
+                  <span class="about-journey-dot"></span>
+                  <div class="about-journey-title">M.Sc. Computer Science</div>
+                  <div class="about-journey-meta">XYZ University &bull; 2021 - 2023</div>
+                  <div class="about-journey-desc">Specialized in AI and Cloud Computing. Graduated with distinction.</div>
+                </li>
+                <li class="about-journey-item">
+                  <span class="about-journey-dot"></span>
+                  <div class="about-journey-title">B.Sc. Information Technology</div>
+                  <div class="about-journey-meta">ABC College &bull; 2017 - 2021</div>
+                  <div class="about-journey-desc">Major in Software Engineering. Dean's List for 3 years.</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div *ngSwitchCase="'experience'">
+            <div class="about-section">
+              <ul class="about-journey-list">
+                <li class="about-journey-item">
+                  <span class="about-journey-dot"></span>
+                  <div class="about-journey-title">Frontend Developer</div>
+                  <div class="about-journey-meta">Tech Solutions Ltd &bull; 2023 - Present</div>
+                  <div class="about-journey-desc">Building modern Angular apps, leading UI/UX improvements, and mentoring junior devs.</div>
+                </li>
+                <li class="about-journey-item">
+                  <span class="about-journey-dot"></span>
+                  <div class="about-journey-title">Software Engineer Intern</div>
+                  <div class="about-journey-meta">InnovateX &bull; Summer 2022</div>
+                  <div class="about-journey-desc">Worked on cloud microservices and automation tools in a fast-paced team.</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div *ngSwitchCase="'project'">
+            <div class="about-section">
+              <ul class="about-journey-list">
+                <li class="about-journey-item">
+                  <span class="about-journey-dot"></span>
+                  <div class="about-journey-title">Portfolio Website</div>
+                  <div class="about-journey-meta">2024</div>
+                  <div class="about-journey-desc">Designed and built a modern, responsive Angular portfolio with animated skills and tabbed About view.</div>
+                </li>
+                <li class="about-journey-item">
+                  <span class="about-journey-dot"></span>
+                  <div class="about-journey-title">AI Chatbot</div>
+                  <div class="about-journey-meta">2023</div>
+                  <div class="about-journey-desc">Developed a smart chatbot using NLP and integrated it with business workflows.</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>

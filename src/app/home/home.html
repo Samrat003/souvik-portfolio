@@ -1,0 +1,40 @@
+<app-nav-bar></app-nav-bar>
+<section class="hero hero-flex">
+  <div class="hero-image">
+    <div class="firecracker-container" *ngIf="showFirecracker">
+      <div class="firecracker"></div>
+      <div class="firecracker-fuse"></div>
+      <div class="firecracker-spark"></div>
+      <div class="firecracker-particles">
+        <div class="particle" *ngFor="let p of particles"></div>
+      </div>
+    </div>
+    <img src="assets/profile.png" alt="Profile" class="profile-pic" />
+  </div>
+  <div class="hero-content">
+    <h2>Hi, I'm <span id="typed-text" class="typed-text"></span></h2>
+    <h1>SOUVIK PATRA</h1>
+    <p>
+      Backend Developer & Full-Stack Java Engineer
+      I build scalable, secure, and high-performance applications using Java,
+       Spring Boot, and Angular. From architecting robust backend systems to
+       delivering intuitive frontends,
+      I turn complex requirements into elegant solutions.
+    </p>
+    <div class="button-row">
+      <a href="https://drive.google.com/uc?export=download&id=1Vl6skmu2Gy5Cfa4SzyFcP77vA7Q1WEUM" class="cta-btn secondary-btn" download>Download CV</a>
+      <a routerLink="/contact-me" class="cta-btn" role="link" tabindex="0">Contact Me</a>
+    </div>
+    <div class="social-row">
+      <a href="https://github.com/Samrat003" target="_blank" rel="noopener" aria-label="GitHub">
+        <img src="assets/logos/git.png" alt="GitHub" class="social-icon" />
+      </a>
+      <a href="https://linkedin.com/in/souvik-patra003" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <img src="assets/logos/lkdn.png" alt="LinkedIn" class="social-icon" />
+      </a>
+      <a href="https://instagram.com/beyond_samrat" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="assets/logos/insta.png" alt="Instagram" class="social-icon" />
+      </a>
+    </div>
+  </div>
+</section>
