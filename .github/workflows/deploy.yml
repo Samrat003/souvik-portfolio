@@ -1,39 +1,55 @@
-name: Deploy Angular to GitHub Pages (Auto Detect Dist)
+name: Deploy Angular to GitHub Pages (Smart SSR or SPA)
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Allow pushing to gh-pages
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Get Angular Project Name
-      id: ngname
-      run: |
-        PROJECT_NAME=$(node -p "require('./angular.json').defaultProject")
-        echo "PROJECT_NAME=$PROJECT_NAME" >> $GITHUB_ENV
-        echo "Detected Angular project name: $PROJECT_NAME"
+      - name: Get Angular Project Name
+        id: ngname
+        run: |
+          PROJECT_NAME=$(node -p "require('./angular.json').defaultProject")
+          echo "PROJECT_NAME=$PROJECT_NAME" >> $GITHUB_ENV
+          echo "Detected Angular project name: $PROJECT_NAME"
 
-    - name: Build Angular App
-      run: |
-        npm run build -- --configuration production --base-href "/${{ github.event.repository.name }}/"
+      - name: Build Angular App
+        run: npm run build -- --configuration production --base-href "/${{ github.event.repository.name }}/"
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages
-        folder: dist/${{ env.PROJECT_NAME }}
+      - name: Determine Deploy Folder
+        id: detectfolder
+        run: |
+          if [ -d "dist/${{ env.PROJECT_NAME }}/browser" ]; then
+            echo "DEPLOY_FOLDER=dist/${{ env.PROJECT_NAME }}/browser" >> $GITHUB_ENV
+            echo "Detected SSR build — using browser folder"
+          else
+            echo "DEPLOY_FOLDER=dist/${{ env.PROJECT_NAME }}" >> $GITHUB_ENV
+            echo "Detected SPA build — using root dist folder"
+          fi
+
+      - name: Copy index.html to 404.html for SPA routing
+        run: cp ${{ env.DEPLOY_FOLDER }}/index.html ${{ env.DEPLOY_FOLDER }}/404.html
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ${{ env.DEPLOY_FOLDER }}
