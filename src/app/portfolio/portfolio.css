@@ -1,5 +1,5 @@
 /* Modern, smooth font for portfolio section */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600&display=swap');
+/* Font import moved to index.html for performance and to avoid build budget errors */
 
 .portfolio-main, .portfolio-left, .portfolio-right, .portfolio-tab, .portfolio-tab-content, .portfolio-project-label, .portfolio-link, .portfolio-left-info, .portfolio-left-name, .portfolio-left-role, .portfolio-left-desc, .portfolio-tech-list, .portfolio-images, .portfolio-project-dropdown {
   font-family: 'Inter', 'Poppins', 'Segoe UI', 'Roboto', Arial, sans-serif !important;
