@@ -1,39 +1,41 @@
-name: Deploy Angular to GitHub Pages (Auto Detect Dist)
+name: Deploy Angular to GitHub Pages
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Get Angular Project Name
-      id: ngname
-      run: |
-        PROJECT_NAME=$(node -p "require('./angular.json').defaultProject")
-        echo "PROJECT_NAME=$PROJECT_NAME" >> $GITHUB_ENV
-        echo "Detected Angular project name: $PROJECT_NAME"
+      - name: Get Angular Project Name
+        id: ngname
+        run: |
+          PROJECT_NAME=$(node -p "require('./angular.json').defaultProject")
+          echo "PROJECT_NAME=$PROJECT_NAME" >> $GITHUB_ENV
+          echo "Detected Angular project name: $PROJECT_NAME"
 
-    - name: Build Angular App
-      run: |
-        npm run build -- --configuration production --base-href "/${{ github.event.repository.name }}/"
+      - name: Build Angular App
+        run: npm run build -- --configuration production --base-href "/${{ github.event.repository.name }}/"
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages
-        folder: dist/${{ env.PROJECT_NAME }}
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist/${{ env.PROJECT_NAME }}
