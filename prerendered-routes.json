@@ -1,0 +1,11 @@
+{
+  "routes": {
+    "/souvik-portfolio": {},
+    "/souvik-portfolio/about": {},
+    "/souvik-portfolio/blog": {},
+    "/souvik-portfolio/contact-me": {},
+    "/souvik-portfolio/portfolio": {},
+    "/souvik-portfolio/service-provided": {},
+    "/souvik-portfolio/skills": {}
+  }
+}
