@@ -87,5 +87,6 @@
   },
   "cli": {
     "analytics": "fe040a47-0962-47e4-b294-7dbc81e4bbda"
-  }
+  },
+  "defaultProject": "samrat-portfolio-client"
 }
