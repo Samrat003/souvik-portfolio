@@ -2,7 +2,10 @@
 <div class="portfolio-main">
   <div class="portfolio-left">
     <div class="portfolio-project-select">
-      <label for="projectDropdown" class="portfolio-project-label">Select Project</label>
+      <label for="projectDropdown" class="portfolio-project-label simple-headline">
+        <span class="simple-headline-bar"></span>
+        <span class="simple-headline-text">Select Project</span>
+      </label>
       <div class="portfolio-dropdown-wrapper">
         <select id="projectDropdown" class="portfolio-project-dropdown" [value]="selectedProjectKey" (change)="onProjectChange($event)">
           <option *ngFor="let project of projects" [value]="project.key">{{ project.name }}</option>
@@ -12,11 +15,11 @@
       <div class="portfolio-link-group">
         <a [href]="selectedProject.github" class="portfolio-link portfolio-github" target="_blank">
           <img src="assets/logos/git.png" alt="GitHub" class="portfolio-link-icon small" />
-          <span>GitHub</span>
+          <span>GitHub Link</span>
         </a>
         <a [href]="selectedProject.live" class="portfolio-link portfolio-live" target="_blank">
           <img src="assets/logos/website.png" alt="Live" class="portfolio-link-icon small" />
-          <span>Live</span>
+          <span>Live Application</span>
         </a>
       </div>
     </div>
@@ -37,7 +40,7 @@
       <button class="portfolio-tab" [class.active]="selectedTab === 'images'" (click)="selectTab('images')">Images</button>
     </div>
     <div class="portfolio-tab-content neo-card"
-         [ngClass]="{'tab-anim-enter': tabAnim, 'images-tab': selectedTab === 'images'}"
+         [ngClass]="{'tab-anim-enter': tabAnim, 'images-tab': selectedTab === 'images', 'paper-texture': selectedTab !== 'images'}"
          (animationend)="tabAnim = false">
       <ng-container [ngSwitch]="selectedTab">
         <div *ngSwitchCase="'description'">
