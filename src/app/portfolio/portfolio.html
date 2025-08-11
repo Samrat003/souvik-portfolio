@@ -1,2 +1,62 @@
 <app-nav-bar></app-nav-bar>
-<p class="coming-soon">coming soon !!</p>
+<div class="portfolio-main">
+  <div class="portfolio-left">
+    <div class="portfolio-project-select">
+      <label for="projectDropdown" class="portfolio-project-label">Select Project</label>
+      <div class="portfolio-dropdown-wrapper">
+        <select id="projectDropdown" class="portfolio-project-dropdown" [value]="selectedProjectKey" (change)="onProjectChange($event)">
+          <option *ngFor="let project of projects" [value]="project.key">{{ project.name }}</option>
+        </select>
+        <span class="portfolio-dropdown-arrow">&#9662;</span>
+      </div>
+      <div class="portfolio-link-group">
+        <a [href]="selectedProject.github" class="portfolio-link portfolio-github" target="_blank">
+          <img src="assets/logos/git.png" alt="GitHub" class="portfolio-link-icon small" />
+          <span>GitHub</span>
+        </a>
+        <a [href]="selectedProject.live" class="portfolio-link portfolio-live" target="_blank">
+          <img src="assets/logos/website.png" alt="Live" class="portfolio-link-icon small" />
+          <span>Live</span>
+        </a>
+      </div>
+    </div>
+    <div class="portfolio-left-info">
+      <img src="assets/profile.png" alt="Profile" class="portfolio-left-pic small" />
+      <div class="portfolio-left-name small">Souvik Patra</div>
+      <div class="portfolio-left-role small">Full-Stack Developer</div>
+      <div class="portfolio-left-divider small"></div>
+      <div class="portfolio-left-desc small">
+        Explore my featured projects using the dropdown above.
+      </div>
+    </div>
+  </div>
+  <div class="portfolio-right">
+    <div class="portfolio-tabs">
+      <button class="portfolio-tab" [class.active]="selectedTab === 'description'" (click)="selectTab('description')">Description</button>
+      <button class="portfolio-tab" [class.active]="selectedTab === 'tech'" (click)="selectTab('tech')">Tech Stack</button>
+      <button class="portfolio-tab" [class.active]="selectedTab === 'images'" (click)="selectTab('images')">Images</button>
+    </div>
+    <div class="portfolio-tab-content neo-card"
+         [ngClass]="{'tab-anim-enter': tabAnim, 'images-tab': selectedTab === 'images'}"
+         (animationend)="tabAnim = false">
+      <ng-container [ngSwitch]="selectedTab">
+        <div *ngSwitchCase="'description'">
+          <h3>{{ selectedProject.name }}</h3>
+          <p>{{ selectedProject.description }}</p>
+        </div>
+        <div *ngSwitchCase="'tech'">
+          <h3>Tech Stack</h3>
+          <ul class="portfolio-tech-list">
+            <li *ngFor="let tech of selectedProject.techStack">{{ tech }}</li>
+          </ul>
+        </div>
+        <div *ngSwitchCase="'images'">
+          <h3>Screenshots</h3>
+          <div class="portfolio-images images-tab">
+            <img *ngFor="let img of selectedProject.images" [src]="img" alt="Project Image" />
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
